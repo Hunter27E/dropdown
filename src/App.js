@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { Dropdown } from './Dropdown'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	// these options would probably be data from a fetch request
+	const options = [
+		'basketball',
+		'baseball',
+		'football',
+		'hockey',
+		'soccer',
+		'tennis',
+		'golf',
+	]
+
+	return (
+		<div className='App'>
+			<h1 className='pageTitle'>Dropdown Demo</h1>
+			<Dropdown
+				multiselect={false}
+				title='Single Select'
+				options={new Set(options)}
+			/>
+			<Dropdown
+				multiselect={true}
+				title='Multi Select'
+				options={new Set(options)}
+			/>
+		</div>
+	)
 }
 
-export default App;
+export default App
