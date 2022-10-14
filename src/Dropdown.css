@@ -2,7 +2,7 @@
 	min-width: 250px;
 	max-width: 500px;
 	padding: 2rem;
-	border-radius: 1rem;
+	border-radius: 0.5rem;
 	background-color: hsla(0, 0%, 100%, 0.15);
 }
 
@@ -16,19 +16,26 @@
 	max-width: 85%;
 }
 
-.dropdownSelected {
-	width: 100%;
-}
-
 .toggleDropdownButton {
 	margin-left: auto;
-	border: none;
-	background-color: transparent;
 	font-size: 1.5em;
 	transition: 0.2s transform ease-in-out;
 }
 .toggleDropdownButton.open {
 	transform: rotate(90deg);
+}
+
+.selectedOptions {
+	list-style-type: none;
+	width: 100%;
+}
+
+.selectedOption {
+	display: inline-block;
+	margin: 0.5rem 0.5rem 0 0;
+	padding: 0.25rem 0.5rem;
+	border-radius: 0.5rem;
+	background-color: grey;
 }
 
 .options {
@@ -39,10 +46,8 @@
 }
 
 .toggleAllButton {
-	margin-right: 1rem;
-	border: none;
+	margin: 1rem 1rem 1rem 0;
 	color: rgb(131, 236, 131);
-	background-color: transparent;
 	text-decoration: underline;
 }
 

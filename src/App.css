@@ -16,6 +16,8 @@ html {
 
 button,
 input {
+	background-color: transparent;
+	border: none;
 	font-family: inherit;
 	cursor: pointer;
 }

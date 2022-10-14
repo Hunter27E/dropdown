@@ -7,8 +7,6 @@ export const Dropdown = ({ multiselect = false, title, options }) => {
 	const [selected, setSelected] = useState(new Set())
 	const [open, setOpen] = useState(false)
 
-	// convert all selected options into a string
-	const selectedString = Array.from(selected).join(', ')
 	// get ClassName based on whether dropdown is open (allows for custom styles when dropdown is open)
 	const openClassName = open ? 'open' : ''
 
@@ -27,7 +25,7 @@ export const Dropdown = ({ multiselect = false, title, options }) => {
 			if (!multiselect) return new Set([option])
 
 			// multi select - toggle option that was clicked, don't change others
-			let newSelected = new Set(prevSelected)
+			const newSelected = new Set(prevSelected)
 			if (newSelected.has(option)) newSelected.delete(option)
 			else newSelected.add(option)
 			return newSelected
@@ -44,7 +42,22 @@ export const Dropdown = ({ multiselect = false, title, options }) => {
 				>
 					➡️
 				</button>
-				<p className='dropdownSelected'>{selectedString}</p>
+
+				<ul className='selectedOptions'>
+					{Array.from(selected).map((selectedOption) => (
+						<li className='selectedOption' key={selectedOption}>
+							{selectedOption} &nbsp;
+							{multiselect && (
+								<button
+									className='deselectButton'
+									onClick={() => toggleOption(selectedOption)}
+								>
+									❌
+								</button>
+							)}
+						</li>
+					))}
+				</ul>
 			</header>
 
 			<ul className={`options ${openClassName}`}>
@@ -85,17 +98,3 @@ Dropdown.propTypes = {
 	title: PropTypes.string.isRequired,
 	options: PropTypes.instanceOf(Set).isRequired,
 }
-
-/* 
-
-    Functionality Requirements
-    • open/close
-    • single & multiselect functionality
-    • select & deselect all option(s) with one click
-    • show selected option(s) when dropdown is closed
-
-    Performance Requirements
-    • render large lists efficiently
-    • limit costly computations
-
-*/
