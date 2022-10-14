@@ -46,7 +46,7 @@ export const Dropdown = ({ multiselect = false, title, options }) => {
 				<ul className='selectedOptions'>
 					{Array.from(selected).map((selectedOption) => (
 						<li className='selectedOption' key={selectedOption}>
-							{selectedOption} &nbsp;
+							{selectedOption}
 							{multiselect && (
 								<button
 									className='deselectButton'

@@ -38,6 +38,10 @@
 	background-color: grey;
 }
 
+.deselectButton {
+	margin-left: 0.5rem;
+}
+
 .options {
 	display: none;
 }
